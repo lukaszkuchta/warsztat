@@ -3,6 +3,7 @@ package pl.sda.j133.hibernate.warsztat;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import pl.sda.j133.hibernate.warsztat.model.Mechanik;
 import pl.sda.j133.hibernate.warsztat.model.Pojazd;
 
 import java.util.ArrayList;
@@ -43,6 +44,24 @@ public class DataAccessObject<T> {
             System.err.println("Błąd: " + e);
         }
         return Optional.empty();
+    }
+
+    public boolean delate(Class<T> tClass, Long id) {
+        try (Session session = HibernateUtil.INSTANCE.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            T encja = session.get(tClass, id);
+            if(encja == null){
+                return false;
+            }
+
+            session.remove(encja);
+            transaction.commit();
+            return true;
+        }catch (Exception e) {
+            System.err.println("Błąd: " + e);
+        }
+        return false;
     }
 
 

@@ -15,7 +15,13 @@ public class Main {
                         new KomendaListaPojazd(),
                         new KomendaListaMechanik(),
                         new KomendaZnajdzPojazd(),
-                        new KomendaZnajdzMechanik()
+                        new KomendaZnajdzMechanik(),
+                        new KomendaUsunPojazd(),
+                        new KomendaUsunMechanik(),
+                        new KomendaDodajSerwisPojazdu(),
+                        new KomendaListaSerwisPojazdu(),
+                        new KomendaZnajdzSerwisPojazdu(),
+                        new KomendaUsunSerwisPojazdu()
                 )
         );
         System.out.println("Lista dostepnych komend:");
