@@ -3,7 +3,6 @@ package pl.sda.j133.hibernate.warsztat;
 import pl.sda.j133.hibernate.warsztat.komendy.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -21,7 +20,10 @@ public class Main {
                         new KomendaDodajSerwisPojazdu(),
                         new KomendaListaSerwisPojazdu(),
                         new KomendaZnajdzSerwisPojazdu(),
-                        new KomendaUsunSerwisPojazdu()
+                        new KomendaUsunSerwisPojazdu(),
+                        new KomendaAktualizujMechanik(),
+                        new KomendaAktualizujPojazd(),
+                        new KomendaZakonczSerwisPojazdu()
                 )
         );
         System.out.println("Lista dostepnych komend:");

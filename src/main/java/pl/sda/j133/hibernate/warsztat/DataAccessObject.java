@@ -64,5 +64,35 @@ public class DataAccessObject<T> {
         return false;
     }
 
+    public void update(Class<T> tClass, Long id, T encjaAktualizujaca) {
+        try (Session session = HibernateUtil.INSTANCE.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            T encja = session.get(tClass, id);
+            if(encja == null){
+                System.err.println("nie znaleziono rekordu");
+                return;
+            }
+
+            session.merge(encjaAktualizujaca);
+
+            transaction.commit();
+        }catch (Exception e) {
+            System.err.println("Błąd: " + e);
+        }
+    }
+
+    public boolean exists(Class<T> tClass, Long id){
+        try (Session session = HibernateUtil.INSTANCE.getSessionFactory().openSession()){
+            T encja = session.get(tClass, id);
+            if(encja != null){
+                return true;
+            }
+        }catch (Exception e) {
+            System.err.println("Błąd: " + e);
+        }
+        return false;
+    }
+
 
 }
